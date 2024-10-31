@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrypFi</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <form id="myForm" method="post">
+      <label for="SymbolInput">Crypto Symbol:</label>
+      <input type="text" id="SymbolInput" name="Symbol">
+
+      <% if(locals.data){ %>
+        
+        <div class="response-area">
+            <h2>Name: <%= data.name %> <%= data.symbol %></h2>
+            <h4>Ranking In Market: <%= data.rank %></h4>
+            <h4>Current Price: $<%= data.price %> USD</h4>
+            <h4>Market Cap: $<%= data.market_cap %> USD</h4>
+            <h4>Highest iN 24 Hours: $<%= data.high_24h %> USD</h4>
+            <h4>Lowest iN 24 Hours: $<%= data.low_24h %> USD</h4>
+        </div>
+
+      <%}else if (locals.error){%>
+        
+        <h3><%= error %></h3>
+
+      <%}else{ %>
+        <div class="response-area">
+          <h2>Name: </h2>
+          <h4>Ranking In Market: </h4>
+          <h4>Current Price: </h4>
+          <h4>Market Cap: </h4>
+          <h4>Highest iN 24 Hours: </h4>
+          <h4>Lowest iN 24 Hours: </h4>
+        </div>
+      <%} %>
+
+      
+      <input id="clear" type="submit" value="Clear" formaction="/clear">
+      <input id="search" type="submit" value="Search" formaction="/search">
+    </form>
+  </div>
+</body>
